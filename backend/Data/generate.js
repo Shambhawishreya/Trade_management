@@ -1,6 +1,7 @@
 import fs from "fs";
 import xlsx from "xlsx";
-const filePath = "C:/Users/KIIT/OneDrive/Desktop/Trade_management/backend/Data/finaldata.xlsx";
+const filePath =
+  "C:/Users/KIIT/OneDrive/Desktop/Trade_management/backend/Data/finaldata.xlsx";
 
 async function main() {
   try {
@@ -8,15 +9,23 @@ async function main() {
     const sheetName = workbook.SheetNames[0];
     const sheetData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
     const tradeData = sheetData.map((row) => ({
-      name: row["Product Name"], 
+      name: row["Product Name"],
       ticker: row["Globex"],
       market: row["Asset Class"],
     }));
-    let baseTimestamp = new Date().getTime() - 30 * 24 * 60 * 60 * 1000;
+
+    // Function to generate a unique timestamp within the same day
     const generateUniqueTimestamp = () => {
-      baseTimestamp += Math.floor(Math.random() * 100000 + 1000);
-      return new Date(baseTimestamp);
+      const baseDate = new Date(); // Current date
+      baseDate.setHours(0, 0, 0, 0); // Set to start of the day (12:00 AM)
+
+      // Generate a random offset in milliseconds within the range of a day (24 hours)
+      const randomOffset = Math.floor(Math.random() * 24 * 60 * 60 * 1000);
+
+      // Add the random offset to the base date
+      return new Date(baseDate.getTime() + randomOffset);
     };
+
     const generateRandomTrade = (trade) => {
       const open = (Math.random() * 1000 + 1000).toFixed(2);
       const high = (parseFloat(open) + Math.random() * 50).toFixed(2);
@@ -40,8 +49,13 @@ async function main() {
         timestamp: generateUniqueTimestamp(),
       };
     };
+
     const dummyData = tradeData.slice(0, 100).map(generateRandomTrade);
-    fs.writeFileSync("trades.json", JSON.stringify(dummyData, null, 2), "utf-8");
+    fs.writeFileSync(
+      "trades.json",
+      JSON.stringify(dummyData, null, 2),
+      "utf-8"
+    );
     console.log("Data has been written to trades.json");
   } catch (error) {
     console.error("An error occurred:", error);

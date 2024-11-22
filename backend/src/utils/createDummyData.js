@@ -3,7 +3,7 @@ import fs from "fs/promises";
 const prisma = new PrismaClient();
 async function main() {
   try {
-    const data = await fs.readFile("./Data/trades.json", "utf-8");
+    const data = await fs.readFile("../../Data/trades.json", "utf-8");
     const trades = JSON.parse(data);
     const formattedTrades = trades.map((trade) => ({
       name: trade.name,
