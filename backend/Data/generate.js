@@ -14,15 +14,13 @@ async function main() {
       market: row["Asset Class"],
     }));
 
-    // Function to generate a unique timestamp within the same day
+    
     const generateUniqueTimestamp = () => {
       const baseDate = new Date(); // Current date
       baseDate.setHours(0, 0, 0, 0); // Set to start of the day (12:00 AM)
 
-      // Generate a random offset in milliseconds within the range of a day (24 hours)
+      //Generate a random offset in milliseconds within the range of a day (24 hours)
       const randomOffset = Math.floor(Math.random() * 24 * 60 * 60 * 1000);
-
-      // Add the random offset to the base date
       return new Date(baseDate.getTime() + randomOffset);
     };
 

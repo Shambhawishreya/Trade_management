@@ -21,3 +21,34 @@ except ValueError as ve:
     print(f"An error occurred with sampling: {ve}. Ensure each 'Asset Class' has at least 11 rows.")
 except Exception as e:
     print(f"An error occurred: {e}")
+
+# import pandas as pd
+
+# file_path = 'C:/Users/KIIT/OneDrive/Desktop/Trade_management/backend/Data/data.xlsx'
+
+# try:
+#     # Read the Excel file
+#     data = pd.ExcelFile(file_path)
+#     df = data.parse('Product Slate Nov 19 2024')
+
+#     # Set the fourth row as the header and skip rows above it
+#     df.columns = df.iloc[3]
+#     df = df[4:].reset_index(drop=True)
+
+#     # Strip any leading or trailing whitespace from column names
+#     df.columns = df.columns.str.strip()
+
+#     # Filter rows where 'Product Name' does not contain the word 'week'
+#     df_filtered = df[~df['Product Name'].str.contains('week', case=False, na=False)]
+
+#     # Count the number of rows for each Asset Class in the filtered dataset
+#     asset_class_counts_filtered = df_filtered['Asset Class'].value_counts()
+
+#     # Display the sizes
+#     print("Size of each Asset Class (Filtered):")
+#     print(asset_class_counts_filtered)
+
+# except FileNotFoundError:
+#     print(f"File not found at {file_path}. Please check the file path and try again.")
+# except Exception as e:
+#     print(f"An error occurred: {e}")
