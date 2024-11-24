@@ -24,9 +24,6 @@ export async function getDailyTrades(req, res) {
       });
     }
     return res.status(200).json({
-      message: "Daily trades fetched successfully.",
-      error: false,
-      success: true,
       data: dailyTrades,
     });
   } catch (error) {

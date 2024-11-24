@@ -16,7 +16,7 @@ async function main() {
 
     
     const generateUniqueTimestamp = () => {
-      const baseDate = new Date(); // Current date
+      const baseDate = new Date('2024-11-20'); // Current date
       baseDate.setHours(0, 0, 0, 0); // Set to start of the day (12:00 AM)
 
       //Generate a random offset in milliseconds within the range of a day (24 hours)
