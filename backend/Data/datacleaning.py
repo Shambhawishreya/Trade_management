@@ -9,7 +9,7 @@ try:
     df.columns = df.columns.str.strip()
     df_filtered = df[~df['Product Name'].str.contains('week', case=False, na=False)]
     df_sampled = df_filtered.groupby('Asset Class', group_keys=False).apply(
-        lambda x: x.sample(n=11, random_state=76)
+        lambda x: x.sample(n=11, random_state=89)
     )
     output_path = 'C:/Users/KIIT/OneDrive/Desktop/Trade_management/backend/Data/finaldata.xlsx'
     df_sampled.to_excel(output_path, index=False)
