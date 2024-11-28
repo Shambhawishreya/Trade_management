@@ -1,0 +1,151 @@
+/* Global Styles */
+body {
+    background-color: #334155;
+    color: rgba(255, 255, 255, 0.836);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.container {
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 50px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+select,
+input {
+    background-color: #1f2a34;
+    color: white;
+    border: 1px solid #57606f;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.add-button{
+    background-color: rgb(79, 136, 79);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.submit-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.submit-button:hover {
+    background-color: #2980b9;
+}
+
+.toggle-button{
+    background-color: #3498db;
+    margin-left: 20px;
+
+}
+
+.loading,
+.error {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error {
+    color: #e74c3c;
+}
+
+.msg{
+    font-size: 1rem;
+}
+
+.chart-title {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 15px 0;
+}
+
+.chart-container {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .chart-title {
+        font-size: 1.1rem;
+    }
+
+    .submit-button {
+        font-size: 0.9rem;
+    }
+}
