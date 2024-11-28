@@ -76,91 +76,91 @@ const Comparison = () => {
 
   return (
     <div className="page-title"> <h1 className="title">Trade Comparison Dashboard</h1>
-    <div className="container">
+      <div className="container">
 
-      {/* Form Section */}
-      <form onSubmit={fetchComparisonData} className="form">
-        <div className="form-group">
-          <label htmlFor="startTime">Start Timestamp:</label>
-          <input
-            type="datetime-local"
-            id="startTime"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="endTime">End Timestamp:</label>
-          <input
-            type="datetime-local"
-            id="endTime"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-            required
-          />
-        </div>
-
-        {selectedStocks.map((stock, index) => (
-          <div key={stock.id} className="stock-group">
-            <div className="form-group">
-              <label htmlFor={`marketName-${index}`}>Stock Name:</label>
-              <select
-                id={`marketName-${index}`}
-                value={stock.marketName}
-                onChange={(e) => handleStockChange(index, e.target.value)}
-                required
-              >
-                <option value="">Select a Stock</option>
-                {stocks.map((stockOption) => (
-                  <option key={stockOption} value={stockOption}>
-                    {stockOption}
-                  </option>
-                ))}
-              </select>
-            </div>
+        {/* Form Section */}
+        <form onSubmit={fetchComparisonData} className="form">
+          <div className="form-group">
+            <label htmlFor="startTime">Start Timestamp:</label>
+            <input
+              type="datetime-local"
+              id="startTime"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              required
+            />
           </div>
-        ))}
+          <div className="form-group">
+            <label htmlFor="endTime">End Timestamp:</label>
+            <input
+              type="datetime-local"
+              id="endTime"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+              required
+            />
+          </div>
 
-        <button type="button" className="add-button" onClick={handleAddStock}>
-          + Add Stock
-        </button>
-        <button type="submit" className="submit-button">
-          Compare Stocks
-        </button>
-      </form>
+          {selectedStocks.map((stock, index) => (
+            <div key={stock.id} className="stock-group">
+              <div className="form-group">
+                <label htmlFor={`marketName-${index}`}>Stock Name:</label>
+                <select
+                  id={`marketName-${index}`}
+                  value={stock.marketName}
+                  onChange={(e) => handleStockChange(index, e.target.value)}
+                  required
+                >
+                  <option value="">Select a Stock</option>
+                  {stocks.map((stockOption) => (
+                    <option key={stockOption} value={stockOption}>
+                      {stockOption}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          ))}
 
-      {/* Results Section */}
-      {loading ? (
-        <p className="loading">Loading comparison data...</p>
-      ) : error ? (
-        <p className="error">Error: {error}</p>
-      ) : comparisonData.length > 0 ? (
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart margin={{ top: 20, right: 5, left: 5, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="timestamp" />
-            <YAxis />
-            <Tooltip 
-            contentStyle={{ backgroundColor: "#fff", color: "#454545", fontSize: "1rem" }}
-            labelStyle={{ color: "#454545" }} />
-            <Legend />
-            {comparisonData.map((data) => (
-              <Line
-                key={data.stockName}
-                type="monotone"
-                dataKey="predicted_last"
-                data={data.predictions}
-                stroke={`#${Math.floor(Math.random() * 16777215).toString(16)}`}
-                name={data.stockName}
-              />
-            ))}
-          </LineChart>
-        </ResponsiveContainer>
-      ) : (
-        <p className="msg">No comparison data available. Please try again with different inputs.</p>
-      )}
-    </div>
+          <button type="button" className="add-button" onClick={handleAddStock}>
+            + Add Stock
+          </button>
+          <button type="submit" className="submit-button">
+            Compare Stocks
+          </button>
+        </form>
+
+        {/* Results Section */}
+        {loading ? (
+          <p className="loading">Loading comparison data...</p>
+        ) : error ? (
+          <p className="error">Error: {error}</p>
+        ) : comparisonData.length > 0 ? (
+          <ResponsiveContainer width="100%" height={400}>
+            <LineChart margin={{ top: 20, right: 5, left: 5, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="timestamp" />
+              <YAxis />
+              <Tooltip
+                contentStyle={{ backgroundColor: "#fff", color: "#454545", fontSize: "1rem" }}
+                labelStyle={{ color: "#454545" }} />
+              <Legend />
+              {comparisonData.map((data) => (
+                <Line
+                  key={data.stockName}
+                  type="monotone"
+                  dataKey="predicted_last"
+                  data={data.predictions}
+                  stroke={`#${Math.floor(Math.random() * 16777215).toString(16)}`}
+                  name={data.stockName}
+                />
+              ))}
+            </LineChart>
+          </ResponsiveContainer>
+        ) : (
+          <p className="msg">No comparison data available. Please try again with different inputs.</p>
+        )}
+      </div>
     </div>
   );
 };

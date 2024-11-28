@@ -70,7 +70,7 @@ input:focus {
     border-color: #3498db;
 }
 
-.add-button{
+.add-button {
     background-color: rgb(79, 136, 79);
     color: white;
     border: none;
@@ -96,7 +96,7 @@ button.submit-button:hover {
     background-color: #2980b9;
 }
 
-.toggle-button{
+.toggle-button {
     background-color: #3498db;
     margin-left: 20px;
 
@@ -113,7 +113,7 @@ button.submit-button:hover {
     color: #e74c3c;
 }
 
-.msg{
+.msg {
     font-size: 1rem;
 }
 

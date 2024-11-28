@@ -18,13 +18,13 @@ def get_cloud_db_connection():
     return psycopg2.connect(CLOUD_DATABASE_URL)
 
 # Database connection (Feature 2)
-# def get_local_db_connection():
-#     return psycopg2.connect(
-#         dbname="cme_trades",
-#         user="postgres",
-#         password="lolo45",
-#         host="localhost"
-#     )
+def get_local_db_connection():
+    return psycopg2.connect(
+        dbname="cme_trades",
+        user="postgres",
+        password="lolo45",
+        host="localhost"
+    )
 
 # Load pre-trained model for Feature 1
 with open("./linear_regression_model.pkl", "rb") as f:
